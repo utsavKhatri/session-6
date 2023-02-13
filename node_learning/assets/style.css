@@ -1,0 +1,76 @@
+:root{
+    margin: 0;
+    padding: 0;
+}
+
+#chessboard {
+  width: 40rem;
+  height: 40rem;
+  transition: 0.15s cubic-bezier(0.24, 0.49, 0.61, 1.37) all;
+}
+.chess-square {
+  float: left;
+  width: 5rem;
+  border: 1px solid black;
+  height: 5rem;
+  background-color: #fff;
+  transition: 0.15s cubic-bezier(0.24, 0.49, 0.61, 1.37) all;
+}
+
+nav {
+  background-color: rgb(236, 246, 255);
+}
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  padding-block: 1rem;
+}
+li{
+    list-style: disc;
+}
+li a{
+    text-decoration: none;
+    color: black;
+}
+@media (max-width: 1000px) {
+  #chessboard {
+    width: 32rem;
+    height: 32rem;
+  }
+  .chess-square {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+@media (max-width: 700px) {
+  #chessboard {
+    width: 24rem;
+    height: 24rem;
+  }
+  .chess-square {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+@media (max-width: 500px) {
+  #chessboard {
+    width: 16rem;
+    height: 16rem;
+  }
+  .chess-square {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+@media (max-width: 300px) {
+  #chessboard {
+    width: 8rem;
+    height: 8rem;
+  }
+  .chess-square {
+    width: 1rem;
+    height: 1rem;
+  }
+}

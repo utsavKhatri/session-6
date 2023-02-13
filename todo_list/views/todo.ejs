@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <link rel="stylesheet" href="/public/assets/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="/public/assets/todo-list.js"></script>
+  </head>
+  <body>
+    <div class="todo-table">
+      <h1>Todo List App</h1>
+      <form id="form-group">
+        <input
+          type="text"
+          name="item"
+          id="input-item"
+          placeholder="Add new Item..."
+          required
+        />
+        <button type="submit">Add Item</button>
+      </form>
+      <ul>
+        <% todos.map(v=>{ %>
+        <li class="list-item"><%= v.item %></li>
+        <% })%>
+      </ul>
+    </div>
+  </body>
+</html>
