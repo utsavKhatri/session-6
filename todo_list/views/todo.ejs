@@ -31,30 +31,30 @@
         <% if(todos.length<1){ %>
         <li class="empty-list">No item in todo list</li>
         <%}else{todos.map((v)=>{ %>
-        <li class="list-item">
+        <li class="list-item" id="<%= v._id %>">
           <%= v.item %>
-          <a class="delete" data-doc="<%= v._id %>"
-            ><i class="fa fa-trash"></i
-          ></a>
+          <i class="fa fa-trash"></i>
         </li>
         <% }) }%>
       </ul>
     </div>
     <script>
-      const deleteTodo = document.querySelector("a.delete");
-
-      deleteTodo.addEventListener("click", (e) => {
-        const endpoint = `/todo/${deleteTodo.dataset.doc}`;
-        fetch(endpoint, {
-          method: "DELETE",
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            window.location.href = data.redirect;
+      const deleteTodo = document.querySelectorAll(".list-item");
+      deleteTodo.forEach((element) => {
+        element.addEventListener("click", (e) => {
+          const endpoint = `/todo/${element.id}`;
+          console.log(endpoint);
+          fetch(endpoint, {
+            method: "DELETE",
           })
-          .catch((err) => {
-            console.log(err);
-          });
+            .then((response) => response.json())
+            .then((data) => {
+              window.location.href = data.redirect;
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        });
       });
     </script>
   </body>

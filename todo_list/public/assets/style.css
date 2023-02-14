@@ -66,10 +66,6 @@ ul {
   letter-spacing: 1px;
 
 }
-.list-item a{
-  text-decoration: none;
-  color: #fff;
-}
 
 .list-item:hover {
   text-decoration: line-through;
