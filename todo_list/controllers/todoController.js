@@ -40,6 +40,7 @@ export default function (app) {
       })
       .catch((err) => {
         console.log(err);
+        res.status(404).render('404');
       });
   });
 
