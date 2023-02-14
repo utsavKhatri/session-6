@@ -7,12 +7,16 @@
     <title>Todo List</title>
     <link rel="stylesheet" href="/public/assets/style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="/public/assets/todo-list.js"></script>
+    <script
+      src="https://kit.fontawesome.com/420c4537ba.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
+
   <body>
     <div class="todo-table">
       <h1>Todo List App</h1>
-      <form id="form-group">
+      <form id="form-group" action="/todo" method="post">
         <input
           type="text"
           name="item"
@@ -23,10 +27,35 @@
         <button type="submit">Add Item</button>
       </form>
       <ul>
-        <% todos.map(v=>{ %>
-        <li class="list-item"><%= v.item %></li>
-        <% })%>
+        <!-- loop through todos array and render in "li" tag -->
+        <% if(todos.length<1){ %>
+        <li class="empty-list">No item in todo list</li>
+        <%}else{todos.map((v)=>{ %>
+        <li class="list-item">
+          <%= v.item %>
+          <a class="delete" data-doc="<%= v._id %>"
+            ><i class="fa fa-trash"></i
+          ></a>
+        </li>
+        <% }) }%>
       </ul>
     </div>
+    <script>
+      const deleteTodo = document.querySelector("a.delete");
+
+      deleteTodo.addEventListener("click", (e) => {
+        const endpoint = `/todo/${deleteTodo.dataset.doc}`;
+        fetch(endpoint, {
+          method: "DELETE",
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            window.location.href = data.redirect;
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
+    </script>
   </body>
 </html>
