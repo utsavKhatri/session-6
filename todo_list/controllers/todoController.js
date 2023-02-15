@@ -3,17 +3,19 @@ import { Todo } from "../models/todoModel.js";
 
 /* Exporting the function to the app.js file. */
 export default function (app) {
+  
   app.use(express.urlencoded({ extended: true }));
 
   /* This is a route that is used to get the data from the database and pass it to the view. */
   app.get("/", (req, res) => {
     // Getting the data from the database and passing it to the view.
-    Todo.find()
+    //res.render("todo")
+    Todo.find({})
       .then((data) => {
         res.render("todo", { todos: data });
       })
       .catch((err) => {
-        console.log(err);
+        console.log("error",err);
       });
   });
 
@@ -49,4 +51,6 @@ export default function (app) {
     res.status(404).render("404");
     next();
   });
+
+
 }
