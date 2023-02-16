@@ -7,7 +7,6 @@ const app = express();
 dotenv.config();
 //mongoose.set('strictQuery', false);
 
-// const URL = "mongodb://utsavkh:675915xiCD4QCw3Vqt63f@15.206.7.200:28017/utsavkh?authMechanism=DEFAULT&authSource=admin"
 mongoose
   .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
